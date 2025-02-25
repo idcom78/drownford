@@ -3,218 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>बिजनेस क्विज गेम</title>
+    <meta name="description" content="Best Online Academy with multiple courses and great features">
+    <title>Academy Website</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            text-align: center;
-            margin: 20px;
-            padding: 0;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; }
+        header {
+            background: #0a0623; color: rgb(255, 255, 255); padding: 15px 30px;
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        h1 {
-            color: #007BFF;
+        .logo { font-size: 24px; font-weight: bold; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: rgb(255, 255, 255); text-decoration: none; }
+        .menu-toggle { display: none; font-size: 24px; cursor: pointer; }
+        
+        @media (max-width: 768px) {
+            nav ul { display: none; flex-direction: column; position: absolute;
+                top: 60px; right: 0; background: #0a0623; width: 200px; padding: 10px; }
+            nav ul.active { display: flex; }
+            .menu-toggle { display: block; }
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-radius: 8px;
+        .hero { height: 80vh; background: url('https://source.unsplash.com/1600x900/?technology,education') center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: rgb(255, 30, 30); text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero h1 { font-size: 50px; }
+        .hero p { font-size: 20px; }
+        .cta-button { background: #ff9800; color: rgb(255, 255, 255); padding: 15px 25px;
+            border: none; cursor: pointer; margin-top: 10px; }
+        .features, .course-list {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 40px;
         }
-        .question {
-            margin: 20px 0;
-            font-size: 1.2em;
+        .feature-box, .course {
+            background: rgb(73, 239, 184); padding: 20px; border-radius: 10px; width: 250px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s;
         }
-        .options button {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 1em;
-            background: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .options button:hover {
-            background: #0056b3;
-        }
-        .correct {
-            color: green;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .wrong {
-            color: red;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .form-group {
-            margin: 15px 0;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button.submit-info {
-            background: #28a745;
-            color: #fff;
-        }
-        button.submit-info:hover {
-            background: #218838;
-        }
-        .timer {
-            font-size: 1.2em;
-            color: #dc3545;
-            font-weight: bold;
-            margin: 10px 0;
-        }
+        .feature-box:hover, .course:hover { transform: scale(1.05); }
+        footer { text-align: center; background: #000000; color: rgb(255, 255, 255); padding: 15px; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <h1>बिजनेस क्विज गेम</h1>
-    <div class="container" id="info-form">
-        <h2>अपनी जानकारी दर्ज करें</h2>
-        <div class="form-group">
-            <label for="name">नाम:</label>
-            <input type="text" id="name" placeholder="अपना नाम दर्ज करें">
-        </div>
-        <div class="form-group">
-            <label for="email">ईमेल:</label>
-            <input type="email" id="email" placeholder="अपना ईमेल दर्ज करें">
-        </div>
-        <button class="submit-info" onclick="startGame()">खेल शुरू करें</button>
-    </div>
-    <div class="container" id="game" style="display: none;">
-        <div class="timer" id="timer">समय: 0 सेकंड</div>
-    </div>
-    <div id="result"></div>
-
+    <header>
+        <div class="logo">Academy</div>
+        <div class="menu-toggle">☰</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home" class="hero">
+        <h1>Welcome to Our Academy</h1>
+        <p>Best Online Courses to Learn and Grow</p>
+        <button class="cta-button">Get Started</button>
+    </section>
+    <section id="features" class="features">
+        <div class="feature-box">Expert Instructors</div>
+        <div class="feature-box">Flexible Learning</div>
+        <div class="feature-box">Certificate Courses</div>
+    </section>
+    <section id="courses" class="course-list">
+        <div class="course">Web Development</div>
+        <div class="course">Data Science</div>
+        <div class="course">AI & Machine Learning</div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Academy. All Rights Reserved.</p>
+    </footer>
     <script>
-        const questions = [
-            {
-                text: "आपका व्यापार बढ़ रहा है। क्या आपको मार्केटिंग में निवेश करना चाहिए?",
-                options: ["हाँ, अधिक खर्च करें!", "नहीं, बचत करें।"],
-                correct: 0
-            },
-            {
-                text: "आपकी टीम छोटी है। क्या आपको और लोगों को काम पर रखना चाहिए?",
-                options: ["हाँ, टीम बढ़ाएं।", "नहीं, यह काफी है।"],
-                correct: 0
-            },
-            {
-                text: "आपके पास एक नया उत्पाद आइडिया है। क्या आपको उसे तुरंत लॉन्च करना चाहिए?",
-                options: ["पहले उपयोगकर्ताओं से टेस्ट करें।", "तुरंत लॉन्च करें।"],
-                correct: 0
-            },
-            {
-                text: "आपका व्यापार अच्छे से चल रहा है, क्या आपको अब ज्यादा कर्ज लेना चाहिए?",
-                options: ["कर्ज लें, लेकिन धीरे-धीरे।", "हां, तुरंत लें।"],
-                correct: 0
-            },
-            {
-                text: "आपके पास सीमित बजट है। क्या आपको डिजिटल मार्केटिंग में निवेश करना चाहिए?",
-                options: ["हाँ, डिजिटल मार्केटिंग सबसे प्रभावी है।", "नहीं, पारंपरिक तरीके आज़माएं।"],
-                correct: 0
-            }
-        ];
-
-        let currentQuestion = 0;
-        let score = 0;
-        let userInfo = {};
-        let timerInterval;
-        let elapsedTime = 0;
-
-        const gameDiv = document.getElementById('game');
-        const resultDiv = document.getElementById('result');
-        const infoForm = document.getElementById('info-form');
-        const timerDiv = document.getElementById('timer');
-
-        function startGame() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-
-            if (!name || !email) {
-                alert("कृपया अपनी पूरी जानकारी भरें।");
-                return;
-            }
-
-            userInfo = { name, email };
-            infoForm.style.display = 'none';
-            gameDiv.style.display = 'block';
-            startTimer();
-            loadQuestion();
-        }
-
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                elapsedTime++;
-                timerDiv.textContent = `समय: ${elapsedTime} सेकंड`;
-            }, 1000);
-        }
-
-        function stopTimer() {
-            clearInterval(timerInterval);
-        }
-
-        function loadQuestion() {
-            if (currentQuestion < questions.length) {
-                const question = questions[currentQuestion];
-
-                gameDiv.innerHTML = `
-                    <div class="timer">${timerDiv.textContent}</div>
-                    <div class="question">${question.text}</div>
-                    <div class="options">
-                        ${question.options.map((option, index) => `
-                            <button onclick="checkAnswer(${index})">${option}</button>
-                        `).join('')}
-                    </div>
-                `;
-            } else {
-                endGame();
-            }
-        }
-
-        function checkAnswer(selected) {
-            const question = questions[currentQuestion];
-            if (selected === question.correct) {
-                score++;
-                resultDiv.innerHTML = `<div class='correct'>सही उत्तर! स्कोर: ${score}</div>`;
-            } else {
-                resultDiv.innerHTML = `<div class='wrong'>गलत उत्तर! स्कोर: ${score}</div>`;
-            }
-
-            currentQuestion++;
-            setTimeout(() => {
-                resultDiv.innerHTML = "";
-                loadQuestion();
-            }, 1000);
-        }
-
-        function endGame() {
-            stopTimer();
-            gameDiv.innerHTML = `<h2>खेल समाप्त! आपका अंतिम स्कोर: ${score} / ${questions.length}</h2>
-                                 <h3>कुल समय: ${elapsedTime} सेकंड</h3>`;
-            saveResult();
-        }
-
-        function saveResult() {
-            const data = {
-                ...userInfo,
-                score,
-                time: elapsedTime
-            };
-            console.log("User Result:", data);
-            alert(`आपका स्कोर और समय सहेज लिया गया है।\nस्कोर: ${score}, समय: ${elapsedTime} सेकंड`);
-        }
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector("nav ul").classList.toggle("active");
+        });
     </script>
 </body>
 </html>
