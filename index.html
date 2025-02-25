@@ -68,6 +68,13 @@
             background: #ff5722; transform: scale(1.1);
             box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
         }
+        
+        button, .cta-button, .feature-box, .course {
+    user-select: none; /* Text selection disable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
 
         /* Features & Courses */
         .features, .course-list {
@@ -161,14 +168,8 @@
     <!-- JavaScript -->
     <script>
         document.querySelector(".menu-toggle").addEventListener("click", function() {
-    let navMenu = document.querySelector("nav ul");
-    if (navMenu.classList.contains("active")) {
-        navMenu.classList.remove("active");
-    } else {
-        navMenu.classList.add("active");
-    }
-});
-
+            document.querySelector("nav ul").classList.toggle("active");
+        });
     </script>
 
 </body>
