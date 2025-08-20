@@ -3,174 +3,544 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Best Online Academy with multiple courses and great features">
-    <title>Academy Website</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f4f4f4; }
-
-        /* Header */
-        header {
-            background: #0a0623; color: #fff; padding: 15px 30px;
-            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo { font-size: 24px; font-weight: bold; }
-        nav ul { 
-            list-style: none; display: flex;
-            transition: transform 0.3s ease-in-out;
-        }
-        nav ul li { margin: 0 15px; }
-        nav ul li a { color: #fff; text-decoration: none; transition: color 0.3s; }
-        nav ul li a:hover { color: #ff9800; }
-        .menu-toggle { display: none; font-size: 24px; cursor: pointer; }
-
-        @media (max-width: 768px) {
-            nav ul { 
-                display: flex; flex-direction: column; position: absolute;
-                top: 60px; right: 0; background: #0a0623; width: 200px; padding: 10px;
-                transform: translateY(-200%);
-            }
-            nav ul.active { transform: translateY(0); }
-            .menu-toggle { display: block; }
-        }
-
-        /* Hero Section */
-        .hero {
-    position: relative; width: 100%; height: 80vh;
-    display: flex; justify-content: center; align-items: center;
-    text-align: center; overflow: hidden;
-    padding-top: 80px; /* Navbar ke neeche gap */
-}
-
-        .hero-img {
-            position: absolute; width: 100%; height: 100%;
-            object-fit: cover; filter: brightness(50%);
-        }
-        .hero::after {
-            content: ""; position: absolute; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); top: 0; left: 0;
-        }
-        .hero-content {
-            position: relative; z-index: 2; color: white;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        .hero h1 { font-size: 50px; animation: fadeInDown 1s ease-in-out; }
-        .hero p { font-size: 20px; animation: fadeInUp 1.5s ease-in-out; }
-
-        .cta-button {
-            background: #ff9800; color: #fff; padding: 15px 35px;
-            border: none; font-size: 18px; font-weight: bold;
-            border-radius: 5px; cursor: pointer; transition: all 0.3s;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .cta-button:hover {
-            background: #ff5722; transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
-        }
-
-        button, .cta-button, .feature-box, .course {
-    user-select: none; /* Text selection disable */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-        /* Features & Courses */
-        .features, .course-list {
-            display: flex; justify-content: center; flex-wrap: wrap;
-            gap: 20px; padding: 40px; max-width: 1200px; margin: auto;
-        }
-        .feature-box, .course {
-            background: #49efb8; padding: 20px;
-            border-radius: 10px; width: 250px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s; text-align: center;
-            font-size: 18px; font-weight: bold;
-        }
-        .feature-box:hover, .course:hover { transform: scale(1.05); }
-
-        /* Footer */
-        footer {
-            text-align: center; background: #000; color: #fff;
-            padding: 15px; margin-top: 20px;
-        }
-        .social-icons { margin-top: 10px; }
-        .social-icons img {
-            width: 30px; margin: 0 10px; transition: transform 0.3s;
-        }
-        .social-icons img:hover { transform: scale(1.2); }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <title>Drownford - Learn Smart. Learn Simply.</title>
+    <meta name="description" content="Master skills through text-based courses with quizzes, progress tracking, and distraction-free reading. Learn smart, learn simply with Drownford.">
+    <meta property="og:title" content="Drownford - Learn Smart. Learn Simply.">
+    <meta property="og:description" content="Master skills through text-based courses with quizzes, progress tracking, and distraction-free reading.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Drownford",
+      "description": "Educational platform for text-based learning",
+      "url": "https://drownford.com",
+      "sameAs": ["https://twitter.com/drownford", "https://facebook.com/drownford"]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- Header -->
-    <header>
-        <div class="logo">Academy</div>
-        <div class="menu-toggle">☰</div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__brand">
+                    <h1 class="logo">
+                        <span class="logo__text">Drownford</span>
+                        <span class="logo__tagline">Learn Smart. Learn Simply.</span>
+                    </h1>
+                </div>
+                
+                <nav class="header__nav" id="nav">
+                    <ul class="nav__list">
+                        <li><a href="#" class="nav__link active" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav__link" data-page="courses">Courses</a></li>
+                        <li><a href="#" class="nav__link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav__link" data-page="contact">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header__actions">
+                    <div class="search-container">
+                        <input type="search" class="search-input" placeholder="Search courses..." id="headerSearch">
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
+                    
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <svg class="theme-icon theme-icon--light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                        </svg>
+                        <svg class="theme-icon theme-icon--dark hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="btn btn--outline btn--sm">Sign In</button>
+                    <button class="btn btn--primary btn--sm">Browse Courses</button>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <img src="drownford1.jpg" alt="Academy Image" class="hero-img" loading="lazy">
-        <div class="hero-content">
-            <h1>Welcome to Our Academy</h1>
-            <p>Best Online Courses to Learn and Grow</p>
-            <button class="cta-button">Get Started</button>
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Page -->
+        <div class="page" id="homePage">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero__content">
+                        <div class="hero__text">
+                            <h1 class="hero__title">Master Skills Through Deep Reading</h1>
+                            <p class="hero__subtitle">Experience focused, text-based learning with interactive quizzes, progress tracking, and distraction-free reading. Perfect for serious learners who prefer reading over videos.</p>
+                            <div class="hero__actions">
+                                <button class="btn btn--primary btn--lg" data-page="courses">Start Learning</button>
+                                <button class="btn btn--outline btn--lg" data-page="courses">Browse Courses</button>
+                            </div>
+                        </div>
+                        <div class="hero__visual">
+                            <svg class="hero__illustration" viewBox="0 0 400 300" fill="none">
+                                <rect x="50" y="50" width="280" height="200" rx="20" fill="var(--color-primary)" opacity="0.1"/>
+                                <rect x="70" y="70" width="240" height="20" rx="10" fill="var(--color-primary)" opacity="0.3"/>
+                                <rect x="70" y="100" width="200" height="12" rx="6" fill="var(--color-primary)" opacity="0.2"/>
+                                <rect x="70" y="120" width="220" height="12" rx="6" fill="var(--color-primary)" opacity="0.2"/>
+                                <rect x="70" y="140" width="180" height="12" rx="6" fill="var(--color-primary)" opacity="0.2"/>
+                                <circle cx="320" cy="100" r="30" fill="var(--color-accent)" opacity="0.8"/>
+                                <path d="M310 100l8 5-8 5v-10z" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <div class="container">
+                    <h2 class="section-title">Why Choose Drownford?</h2>
+                    <div class="features__grid">
+                        <div class="feature-card">
+                            <div class="feature-card__icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6l1 5h6l2-5h3l-3 12H8L5 3z"></path>
+                                    <circle cx="9" cy="19" r="1"></circle>
+                                    <circle cx="20" cy="19" r="1"></circle>
+                                </svg>
+                            </div>
+                            <h3 class="feature-card__title">Learn by Reading</h3>
+                            <p class="feature-card__description">Deep, focused text-based lessons designed for maximum comprehension and retention without video distractions.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-card__icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4"></path>
+                                    <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                                    <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path>
+                                </svg>
+                            </div>
+                            <h3 class="feature-card__title">Instant Quizzes</h3>
+                            <p class="feature-card__description">Test your understanding immediately after each lesson with carefully crafted questions and instant feedback.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-card__icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                </svg>
+                            </div>
+                            <h3 class="feature-card__title">Track Progress</h3>
+                            <p class="feature-card__description">Visual progress tracking keeps you motivated with completion rates, streaks, and personal learning analytics.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-card__icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27,6.96 12,12.01 20.73,6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <h3 class="feature-card__title">Offline Ready</h3>
+                            <p class="feature-card__description">Download lessons for offline reading. Learn anywhere, anytime without an internet connection.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Courses -->
+            <section class="featured-courses">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Featured Courses</h2>
+                        <button class="btn btn--outline" data-page="courses">View All Courses</button>
+                    </div>
+                    <div class="courses-grid" id="featuredCoursesGrid">
+                        <!-- Courses will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="testimonials">
+                <div class="container">
+                    <h2 class="section-title">What Our Students Say</h2>
+                    <div class="testimonials__grid" id="testimonialsGrid">
+                        <!-- Testimonials will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter CTA -->
+            <section class="newsletter-cta">
+                <div class="container">
+                    <div class="cta-card">
+                        <h2 class="cta-card__title">Create Your Study Routine with Drownford</h2>
+                        <p class="cta-card__description">Join thousands of learners who've transformed their skills through focused, text-based learning.</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="newsletter-form__group">
+                                <input type="email" class="form-control" placeholder="Enter your email" required id="newsletterEmail">
+                                <button type="submit" class="btn btn--primary">Get Started</button>
+                            </div>
+                            <div class="form-message" id="newsletterMessage"></div>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="feature-box">Expert Instructors</div>
-        <div class="feature-box">Flexible Learning</div>
-        <div class="feature-box">Certificate Courses</div>
-    </section>
+        <!-- Courses Page -->
+        <div class="page hidden" id="coursesPage">
+            <section class="courses-catalog">
+                <div class="container">
+                    <div class="catalog-header">
+                        <h1>Course Catalog</h1>
+                        <p>Discover comprehensive text-based courses designed for deep learning and skill mastery.</p>
+                    </div>
+                    
+                    <div class="catalog-content">
+                        <aside class="catalog-sidebar">
+                            <div class="filters">
+                                <h3>Filter Courses</h3>
+                                
+                                <div class="filter-group">
+                                    <label class="form-label">Search</label>
+                                    <input type="search" class="form-control" placeholder="Search courses..." id="courseSearch">
+                                </div>
+                                
+                                <div class="filter-group">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-control" id="categoryFilter">
+                                        <option value="">All Categories</option>
+                                        <option value="Math">Math</option>
+                                        <option value="Reasoning">Reasoning</option>
+                                        <option value="English">English</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="filter-group">
+                                    <label class="form-label">Difficulty</label>
+                                    <select class="form-control" id="difficultyFilter">
+                                        <option value="">All Levels</option>
+                                        <option value="Beginner">Beginner</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="filter-group">
+                                    <label class="form-label">Sort By</label>
+                                    <select class="form-control" id="sortFilter">
+                                        <option value="newest">Newest</option>
+                                        <option value="popular">Most Popular</option>
+                                        <option value="title">A-Z</option>
+                                        <option value="rating">Highest Rated</option>
+                                    </select>
+                                </div>
+                                
+                                <button class="btn btn--outline btn--full-width" id="clearFilters">Clear All Filters</button>
+                            </div>
+                        </aside>
+                        
+                        <main class="catalog-main">
+                            <div class="catalog-results" id="catalogResults">
+                                <div class="courses-grid" id="coursesGrid">
+                                    <!-- Courses will be loaded here -->
+                                </div>
+                                <div class="empty-state hidden" id="emptyState">
+                                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="m21 21-4.35-4.35"></path>
+                                    </svg>
+                                    <h3>No courses found</h3>
+                                    <p>Try adjusting your filters or search terms.</p>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-    <!-- Courses Section -->
-    <section id="courses" class="course-list">
-        <div class="course">Web Development</div>
-        <div class="course">Data Science</div>
-        <div class="course">AI & Machine Learning</div>
-    </section>
+        <!-- Course Reader Page -->
+        <div class="page hidden" id="courseReaderPage">
+            <div class="reader-layout">
+                <header class="reader-header">
+                    <div class="container">
+                        <div class="reader-header__content">
+                            <div class="reader-header__info">
+                                <button class="btn btn--outline btn--sm back-btn" data-page="courses">← Back to Courses</button>
+                                <h1 class="reader-header__title" id="courseTitle">Course Title</h1>
+                                <div class="reader-header__meta">
+                                    <span class="badge" id="courseDifficulty">Beginner</span>
+                                    <span class="reader-header__duration" id="courseDuration">6h</span>
+                                </div>
+                            </div>
+                            <div class="reader-header__actions">
+                                <button class="btn btn--outline btn--sm" id="fontSizeBtn">Aa</button>
+                                <button class="btn btn--outline btn--sm" id="focusModeBtn">Focus</button>
+                                <button class="btn btn--outline btn--sm" id="notesToggleBtn">Notes</button>
+                                <button class="btn btn--primary btn--sm" id="shareBtn">Share</button>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar__fill" id="courseProgress"></div>
+                        </div>
+                    </div>
+                </header>
+                
+                <div class="reader-content">
+                    <aside class="lesson-sidebar" id="lessonSidebar">
+                        <div class="lesson-sidebar__content">
+                            <h3>Lessons</h3>
+                            <nav class="lesson-nav" id="lessonNav">
+                                <!-- Lesson list will be loaded here -->
+                            </nav>
+                        </div>
+                    </aside>
+                    
+                    <main class="reader-main">
+                        <article class="lesson-content" id="lessonContent">
+                            <!-- Lesson content will be loaded here -->
+                        </article>
+                        
+                        <div class="lesson-actions">
+                            <button class="btn btn--outline" id="prevLessonBtn">← Previous</button>
+                            <button class="btn btn--primary" id="nextLessonBtn">Next →</button>
+                        </div>
+                        
+                        <!-- Quiz Modal -->
+                        <div class="modal quiz-modal hidden" id="quizModal">
+                            <div class="modal__backdrop"></div>
+                            <div class="modal__content">
+                                <div class="modal__header">
+                                    <h3>Lesson Quiz</h3>
+                                    <button class="modal__close" id="closeQuizBtn">×</button>
+                                </div>
+                                <div class="modal__body" id="quizContent">
+                                    <!-- Quiz content will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    
+                    <aside class="notes-sidebar hidden" id="notesSidebar">
+                        <div class="notes-sidebar__content">
+                            <h3>My Notes</h3>
+                            <textarea class="notes-textarea" placeholder="Add your notes here..." id="notesTextarea"></textarea>
+                            <button class="btn btn--primary btn--full-width" id="saveNotesBtn">Save Notes</button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div class="page hidden" id="aboutPage">
+            <section class="about-hero">
+                <div class="container">
+                    <h1>About Drownford</h1>
+                    <p class="lead">We believe in the power of deep reading and focused learning to transform minds and careers.</p>
+                </div>
+            </section>
+            
+            <section class="about-content">
+                <div class="container">
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h2>Our Mission</h2>
+                            <p>In a world filled with distracting video content and flashy interfaces, Drownford returns to the fundamentals of learning: deep reading, focused study, and meaningful comprehension.</p>
+                            
+                            <p>We've designed every aspect of our platform to support serious learners who want to master skills through text-based content, interactive quizzes, and distraction-free environments.</p>
+                            
+                            <h3>Our Pedagogy</h3>
+                            <ul>
+                                <li><strong>Reading-First Approach:</strong> Text-based lessons that promote deep understanding</li>
+                                <li><strong>Active Learning:</strong> Immediate quizzes and interactive elements</li>
+                                <li><strong>Progress Tracking:</strong> Clear milestones and achievement systems</li>
+                                <li><strong>Distraction-Free:</strong> Clean, minimal interface focused on content</li>
+                            </ul>
+                            
+                            <h3>Why Text-Based Learning?</h3>
+                            <p>Research shows that reading comprehension and retention rates are significantly higher with text-based materials compared to video content. Our courses are specifically designed to leverage this advantage while maintaining engagement through interactive elements.</p>
+                        </div>
+                        
+                        <div class="about-stats">
+                            <div class="stat-card">
+                                <div class="stat-card__number">10,000+</div>
+                                <div class="stat-card__label">Active Learners</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card__number">50+</div>
+                                <div class="stat-card__label">Expert Courses</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card__number">95%</div>
+                                <div class="stat-card__label">Completion Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div class="page hidden" id="contactPage">
+            <section class="contact-hero">
+                <div class="container">
+                    <h1>Contact Us</h1>
+                    <p class="lead">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                </div>
+            </section>
+            
+            <section class="contact-content">
+                <div class="container">
+                    <div class="contact-grid">
+                        <div class="contact-form-container">
+                            <form class="contact-form" id="contactForm">
+                                <div class="form-group">
+                                    <label for="contactName" class="form-label">Name</label>
+                                    <input type="text" id="contactName" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactEmail" class="form-label">Email</label>
+                                    <input type="email" id="contactEmail" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactSubject" class="form-label">Subject</label>
+                                    <select id="contactSubject" class="form-control" required>
+                                        <option value="">Select a topic</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="technical">Technical Support</option>
+                                        <option value="billing">Billing Question</option>
+                                        <option value="feedback">Feedback</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactMessage" class="form-label">Message</label>
+                                    <textarea id="contactMessage" class="form-control" rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+                                
+                                <div class="form-message" id="contactMessage"></div>
+                            </form>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <h3>Get in Touch</h3>
+                            <p>We're here to help you succeed in your learning journey.</p>
+                            
+                            <div class="contact-item">
+                                <strong>Email</strong>
+                                <p>support@drownford.com</p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <strong>Response Time</strong>
+                                <p>We typically respond within 24 hours</p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <strong>Support Hours</strong>
+                                <p>Monday - Friday: 9AM - 6PM EST</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Academy. All Rights Reserved.</p>
-        <div class="social-icons">
-            <a href="#"><img src="facebook.svg" alt="Facebook"></a>
-            <a href="#"><img src="twitter.svg" alt="Twitter"></a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <h3 class="footer__logo">Drownford</h3>
+                    <p class="footer__tagline">Learn Smart. Learn Simply.</p>
+                </div>
+                
+                <div class="footer__links">
+                    <div class="footer__column">
+                        <h4>Platform</h4>
+                        <ul>
+                            <li><a href="#" data-page="courses">Browse Courses</a></li>
+                            <li><a href="#" data-page="home">Features</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer__column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#" data-page="about">About</a></li>
+                            <li><a href="#" data-page="contact">Contact</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer__column">
+                        <h4>Connect</h4>
+                        <div class="footer__social">
+                            <a href="#" target="_blank" aria-label="Twitter">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" aria-label="Facebook">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" aria-label="LinkedIn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2025 Drownford. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        document.querySelector(".menu-toggle").addEventListener("click", function() {
-            document.querySelector("nav ul").classList.toggle("active");
-        });
-    </script>
+    <!-- Toast Notification -->
+    <div class="toast hidden" id="toast">
+        <div class="toast__content">
+            <span class="toast__message" id="toastMessage"></span>
+            <button class="toast__close" id="toastClose">×</button>
+        </div>
+    </div>
 
+    <script src="app.js"></script>
 </body>
 </html>
